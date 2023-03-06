@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileWriter;
 
 // 4*дополнительно. К калькулятору из предыдущего дз добавить логирование.
 // 1 + 3 = 4->
@@ -21,22 +23,48 @@ public class proj {
             int temp = 0;
             if (sym.equals("+")){
                 temp = numOne + numSec;
-                System.out.println(numOne + "+" + numSec + "=" + temp);
+                String x = (numOne + "+" + numSec + "=" + temp);
+                System.out.println(x);
+                writeToFile(x);
             }
             else if (sym.equals("-")){
                 temp = numOne - numSec;
-                System.out.println(numOne + "-" + numSec + "=" + temp);
+                String x = (numOne + "-" + numSec + "=" + temp);
+                System.out.println(x);
+                writeToFile(x);
             }
             else if (sym.equals("/")){
                 temp = numOne / numSec;
-                System.out.println(numOne + "/" + numSec + "=" + temp);
+                String x = (numOne + "/" + numSec + "=" + temp);
+                System.out.println(x);
+                writeToFile(x);
             }
             else if (sym.equals("*")){
                 temp = numOne * numSec;
-                System.out.println(numOne + "*" + numSec + "=" + temp);
+                String x = (numOne + "*" + numSec + "=" + temp);
+                System.out.println(x);
+                writeToFile(x);
             }
             else{
-                System.out.println("Некорректный ввод!");
+                String x = ("Некорректный ввод!");
+                System.out.println(x);
+                writeToFile(x);
             }
         }
+
+        public static void writeToFile(String expression){
+            String file_name = "1.txt";
+            File file = new File(file_name);
+            try{
+                FileWriter writer = new FileWriter(file,true);
+                writer.write(expression);
+                writer.write("\n");
+                writer.close();
+                System.out.println("Информация добавлена!");
+            }
+            catch (Exception e){
+                System.out.println("Что то пошло не так");
+            }
+        }
+
 }
